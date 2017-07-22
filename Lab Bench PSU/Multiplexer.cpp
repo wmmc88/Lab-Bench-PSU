@@ -1,6 +1,6 @@
 // File for all Multiplexer-related functions
 // 
-//To ensure fast operation, does not check if other code has changed state of Signal Pins
+//To ensure fastest operation, does not check if other code has changed state of Signal Pins
 
 #include "Multiplexer.h"
 
@@ -24,49 +24,49 @@ namespace multiplexer {
 		digitalWrite(m_signalPin3, LOW);
 	}
 
-	int Multiplexer::analogReadMux(int muxChannel) {
+	int Multiplexer::analogReadMux(MUXChannel muxChannel) {
 		int data = -1;
 		switch (muxChannel) {
-		case 0:
+		case MUXChannel::C0:
 			data = analogRead(m_comPin);
 			break;
-		case 1:
+		case MUXChannel::C1:
 			digitalWrite(m_signalPin0, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin0, LOW);
 			break;
-		case 2:
+		case MUXChannel::C2:
 			digitalWrite(m_signalPin1, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin1, LOW);
 			break;
-		case 3:
+		case MUXChannel::C3:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin1, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin0, LOW);
 			digitalWrite(m_signalPin1, LOW);
 			break;
-		case 4:
+		case MUXChannel::C4:
 			digitalWrite(m_signalPin2, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin2, LOW);
 			break;
-		case 5:
+		case MUXChannel::C5:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin0, LOW);
 			digitalWrite(m_signalPin2, LOW);
 			break;
-		case 6:
+		case MUXChannel::C6:
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin1, LOW);
 			digitalWrite(m_signalPin2, LOW);
 			break;
-		case 7:
+		case MUXChannel::C7:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
@@ -75,26 +75,26 @@ namespace multiplexer {
 			digitalWrite(m_signalPin1, LOW);
 			digitalWrite(m_signalPin2, LOW);
 			break;
-		case 8:
+		case MUXChannel::C8:
 			digitalWrite(m_signalPin3, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 9:
+		case MUXChannel::C9:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin0, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 10:
+		case MUXChannel::C10:
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin1, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 11:
+		case MUXChannel::C11:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
@@ -103,14 +103,14 @@ namespace multiplexer {
 			digitalWrite(m_signalPin1, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 12:
+		case MUXChannel::C12:
 			digitalWrite(m_signalPin2, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
 			data = analogRead(m_comPin);
 			digitalWrite(m_signalPin2, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 13:
+		case MUXChannel::C13:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
@@ -119,7 +119,7 @@ namespace multiplexer {
 			digitalWrite(m_signalPin2, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 14:
+		case MUXChannel::C14:
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
 			digitalWrite(m_signalPin3, HIGH);
@@ -128,7 +128,7 @@ namespace multiplexer {
 			digitalWrite(m_signalPin2, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
-		case 15:
+		case MUXChannel::C15:
 			digitalWrite(m_signalPin0, HIGH);
 			digitalWrite(m_signalPin1, HIGH);
 			digitalWrite(m_signalPin2, HIGH);
@@ -139,6 +139,9 @@ namespace multiplexer {
 			digitalWrite(m_signalPin2, LOW);
 			digitalWrite(m_signalPin3, LOW);
 			break;
+
+		default:
+			Serial.println("ERROR: Invalid Mux Channel ID");
 		}
 		return data;
 	}
