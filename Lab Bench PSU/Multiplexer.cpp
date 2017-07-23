@@ -6,6 +6,17 @@
 
 namespace multiplexer {
 
+	MUXChannel& operator++(MUXChannel &c)
+	{
+		return c = static_cast<MUXChannel>(static_cast<int>(c) + 1);
+	}
+	MUXChannel operator++(MUXChannel &c, int)
+	{
+		MUXChannel rVal = c;
+		++c;
+		return rVal;
+	}
+
 	void Multiplexer::init(int comPin, int signalPin0, int signalPin1, int signalPin2, int signalPin3) {
 		m_comPin = comPin;
 		m_signalPin0 = signalPin0;

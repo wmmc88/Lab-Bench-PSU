@@ -41,39 +41,26 @@
 #define USBSB_R1 (20)
 #define USBSB_R2 (100)
 
-//Voltmeter & Ammeter Channel Definitions
-enum class Channel { FIRST_CHANNEL, P3V = FIRST_CHANNEL, P5V, P12V, N12V, PVAR1, PVAR2, USB2X, USBSB, LAST_CHANNEL = USBSB, NOT_A_CHANNEL, NUMBER_OF_CHANNELS = NOT_A_CHANNEL };
-Channel& operator++(Channel &c)
-{
-	return c = static_cast<Channel>(static_cast<int>(c) + 1);
-}
-Channel operator++(Channel &c, int)
-{
-	Channel rVal = c;
-	++c;
-	return rVal;
-}
-
 //Debug
 const static bool debug = true;
 
 //Globals
 multiplexer::Multiplexer mux;
-sensorReadings::Voltmeter voltmeters[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];///array of voltmeters
+sensorReadings::Voltmeter voltmeters[static_cast<int>(sensorReadings::Channel::NUMBER_OF_CHANNELS)];///array of voltmeters
 sensorReadings::Data data;
 
 void setup()
 {
 	mux.init(MUX_COM_PIN, MUX_SIGNAL_PIN_0, MUX_SIGNAL_PIN_1, MUX_SIGNAL_PIN_2, MUX_SIGNAL_PIN_3);
 
-	voltmeters[static_cast<int>(Channel::P3V)].init(P3V_R1, P3V_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::P5V)].init(P5V_R1, P5V_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::P12V)].init(P12V_R1, P12V_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::N12V)].init(N12V_R1, N12V_R2, USB_VCC, POSITIVE_REFERENCE);
-	voltmeters[static_cast<int>(Channel::PVAR1)].init(PVAR1_R1, PVAR1_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::PVAR2)].init(PVAR2_R1, PVAR2_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::USB2X)].init(USB2X_R1, USB2X_R2, USB_VCC);
-	voltmeters[static_cast<int>(Channel::USBSB)].init(USBSB_R1,USBSB_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].init(P3V_R1, P3V_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::P5V)].init(P5V_R1, P5V_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::P12V)].init(P12V_R1, P12V_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::N12V)].init(N12V_R1, N12V_R2, USB_VCC, POSITIVE_REFERENCE);
+	voltmeters[static_cast<int>(sensorReadings::Channel::PVAR1)].init(PVAR1_R1, PVAR1_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::PVAR2)].init(PVAR2_R1, PVAR2_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::USB2X)].init(USB2X_R1, USB2X_R2, USB_VCC);
+	voltmeters[static_cast<int>(sensorReadings::Channel::USBSB)].init(USBSB_R1,USBSB_R2, USB_VCC);
 }
 
 void loop()
@@ -81,8 +68,8 @@ void loop()
 	sensorReadings::updateData(data);
 
 	//TODO: Move to own Data File
-	/*for (channel c = channel::first_channel; c <= channel::last_channel; c++) {
-		if (c <= static_cast<channel>(multiplexer::muxchannel::last_muxchannel)) {
+	/*for (sensorReadings::Channel c = sensorReadings::Channel::first_channel; c <= sensorReadings::Channel::last_channel; c++) {
+		if (c <= static_cast<sensorReadings::Channel>(multiplexer::muxchannel::last_muxchannel)) {
 			voltmeter[static_cast<int>(c)] = voltmeter::getvoltage(mux.analogreadmux(static_cast<multiplexer::muxchannel>(c)));
 		}
 	}*/

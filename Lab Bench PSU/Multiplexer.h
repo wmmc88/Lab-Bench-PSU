@@ -9,17 +9,11 @@
 #include "WProgram.h"
 #endif
 namespace multiplexer {
+
 	enum class MUXChannel { FIRST_MUXCHANNEL, C0 = FIRST_MUXCHANNEL, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, LAST_MUXCHANNEL = C15, NOT_A_MUXCHANNEL, NUMBER_OF_MUXCHANNELS = NOT_A_MUXCHANNEL };
-	MUXChannel& operator++(MUXChannel &c)
-	{
-		return c = static_cast<MUXChannel>(static_cast<int>(c) + 1);
-	}
-	MUXChannel operator++(MUXChannel &c, int)
-	{
-		MUXChannel rVal = c;
-		++c;
-		return rVal;
-	}
+	MUXChannel& operator++(MUXChannel &c);
+	MUXChannel operator++(MUXChannel &c, int);
+
 	class Multiplexer {
 	public:
 		void init(int c, int s0, int s1, int s2, int s3);

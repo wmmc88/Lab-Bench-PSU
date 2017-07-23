@@ -4,11 +4,17 @@
 #define _DATA_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
+#include "Arduino.h"
 #else
-	#include "WProgram.h"
+#include "WProgram.h"
 #endif
 namespace sensorReadings {
+
+	//Voltmeter & Ammeter Channel Definitions
+	enum class Channel { FIRST_CHANNEL, P3V = FIRST_CHANNEL, P5V, P12V, N12V, PVAR1, PVAR2, USB2X, USBSB, LAST_CHANNEL = USBSB, NOT_A_CHANNEL, NUMBER_OF_CHANNELS = NOT_A_CHANNEL };
+	Channel& operator++(Channel &c);
+	Channel operator++(Channel &c, int);
+
 	typedef struct Data {
 		double voltage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
 		double amperage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
