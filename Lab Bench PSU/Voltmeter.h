@@ -13,12 +13,15 @@ namespace sensorReadings {
 
 	class Voltmeter {
 	public:
-		void init(double r1, double r2, double vRef);
-		void init(double r1, double r2, double vRef, double ref);
+		void init(double r1, double r2, double internalAREF);
+		void init(double r1, double r2, double internalAREF, bool refVoltage);
 		double getVoltage(int analogReading);
 	private:
-		double m_r1 = -1.1, m_r2 = -1.1, m_vRef = 5.0, m_ref = 0;
+		double m_r1 = -1.1, m_r2 = -1.1, m_internalAREF = 1.1;
+		bool m_refVoltage = false;
 	};
+
+	double readVcc(double internalReference);
 }
 #endif
 

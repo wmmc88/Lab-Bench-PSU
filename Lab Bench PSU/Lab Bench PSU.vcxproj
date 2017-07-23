@@ -96,4 +96,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties debug.view.FreeMemory="1" debug.view.AnalogPins="1" arduino.upload.port="COM3" debug.view.DigitalPins="1" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
