@@ -21,6 +21,8 @@ namespace multiplexer {
 	private:
 		int m_comPin = -1, m_signalPin0 = -1, m_signalPin1 = -1, m_signalPin2 = -1, m_signalPin3 = -1;
 	};
+
+	extern Multiplexer multiplexer;
 }
 
 #endif

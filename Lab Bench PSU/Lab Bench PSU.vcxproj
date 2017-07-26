@@ -80,12 +80,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ammeter.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Multiplexer.h" />
     <ClInclude Include="Voltmeter.h" />
     <ClInclude Include="__vm\.Lab Bench PSU.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ammeter.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="Multiplexer.cpp" />
     <ClCompile Include="Voltmeter.cpp" />

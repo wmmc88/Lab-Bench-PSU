@@ -8,7 +8,14 @@
 #else
 #include "WProgram.h"
 #endif
+
+#include "Multiplexer.h"
+#include "Voltmeter.h"
+#include "Ammeter.h"
+
 namespace sensorReadings {
+	extern multiplexer::Multiplexer mux;
+	extern Voltmeter voltmeters[];
 
 	//Voltmeter & Ammeter Channel Definitions
 	enum class Channel { FIRST_CHANNEL, P3V = FIRST_CHANNEL, P5V, P12V, N12V, PVAR1, PVAR2, USB2X, USBSB, LAST_CHANNEL = USBSB, NOT_A_CHANNEL, NUMBER_OF_CHANNELS = NOT_A_CHANNEL };

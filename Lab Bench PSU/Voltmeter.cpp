@@ -12,6 +12,11 @@ namespace sensorReadings {
 		m_r2 = r2;
 		m_internalAREF = internalAREF;
 		m_refVoltage = false;
+		m_average = 0.0;
+		m_index = 0;
+		for (int i = 0; i < constants::numberReadings; i++) {
+			m_normalizedReadings[i] = 0;
+		}
 	}
 
 	void Voltmeter::init(double r1, double r2, double internalAREF, bool refVoltage) {
@@ -19,27 +24,34 @@ namespace sensorReadings {
 		m_r2 = r2;
 		m_internalAREF = internalAREF;
 		m_refVoltage = refVoltage;
+		m_average = 0.0;
+		m_index = 0;
+		for (int i = 0; i < constants::numberReadings; i++) {
+			m_normalizedReadings[i] = 0;
+		}
 	}
 
 	double Voltmeter::getVoltage(int analogReading) { // Add half-step (m_vRef/1024/2) for average resultant value b/c Arduino rounds down
+		m_average -= m_normalizedReadings[m_index];
 		if (m_refVoltage == true) {
 			if (m_r2 == 0) {
-				return analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2) - readVcc(m_internalAREF); //no voltage divider
+				m_normalizedReadings[m_index] = (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2) - readVcc(m_internalAREF))/constants::numberReadings; //no voltage divider
 			}
 			else {
-				return (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2) - readVcc(m_internalAREF)) * (m_r1 + m_r2) / m_r2;
+				m_normalizedReadings[m_index] = (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2) - readVcc(m_internalAREF)) * (m_r1 + m_r2) / m_r2 /constants::numberReadings;
 			}
 		}
 		else {
 			if (m_r2 == 0) {
-				return analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2); //no voltage divider
+				m_normalizedReadings[m_index] =  (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2))/constants::numberReadings; //no voltage divider
 			}
 			else {
-				return (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2)) * (m_r1 + m_r2) / m_r2;
+				m_normalizedReadings[m_index] = (analogReading * readVcc(m_internalAREF) / 1024 + (readVcc(m_internalAREF) / 1024 / 2)) * (m_r1 + m_r2) / m_r2 /constants::numberReadings;
 			}
 		}
-
-
+		m_average += (m_normalizedReadings[m_index]);
+		m_index = (m_index + 1) %constants::numberReadings;
+		return(m_average);
 	}
 
 	/*

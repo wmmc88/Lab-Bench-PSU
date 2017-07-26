@@ -1,6 +1,6 @@
-C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Voltmeter.cpp.o: \
- C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Voltmeter.cpp \
- C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Voltmeter.h \
+C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Ammeter.cpp.o: \
+ C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Ammeter.cpp \
+ C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Ammeter.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
