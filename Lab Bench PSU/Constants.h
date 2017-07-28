@@ -14,11 +14,11 @@ namespace constants {
 #define ARDUINO_INTERNAL_1100MV_AREF (1.092)  //internal reference measured externally with voltmeter
 
 //MUX Pin Definitions
-#define MUX_COM_PIN (0)//Analog0
-#define MUX_SIGNAL_PIN_0 (15)
-#define MUX_SIGNAL_PIN_1 (16)
-#define MUX_SIGNAL_PIN_2 (17)
-#define MUX_SIGNAL_PIN_3 (18)
+#define MUX_COM_PIN (1)//A1
+#define MUX_SIGNAL_PIN_0 (16)//A2
+#define MUX_SIGNAL_PIN_1 (17)//A3
+#define MUX_SIGNAL_PIN_2 (18)//A4
+#define MUX_SIGNAL_PIN_3 (19)//A5
 
 //Display Driver Pin Definitions
 /*Library only supports hardware SPI at this time
@@ -26,7 +26,8 @@ Connect SCLK to UNO Digital #13 (Hardware SPI clock)
 Connect MISO to UNO Digital #12 (Hardware SPI MISO)
 Connect MOSI to UNO Digital #11 (Hardware SPI MOSI) */
 #define RA8875_CS (10)
-#define RA8875_RESET (9)
+#define RA8875_RESET (7)
+#define RA8875_WAIT (4)
 #define RA8875_INT (2)
 
 //Voltmeter Constants
