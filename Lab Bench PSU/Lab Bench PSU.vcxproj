@@ -84,6 +84,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Multiplexer.h" />
+    <ClInclude Include="Switch.h" />
     <ClInclude Include="Voltmeter.h" />
     <ClInclude Include="__vm\.Lab Bench PSU.vsarduino.h" />
   </ItemGroup>
@@ -91,6 +92,7 @@
     <ClCompile Include="Ammeter.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="Multiplexer.cpp" />
+    <ClCompile Include="Switch.cpp" />
     <ClCompile Include="Voltmeter.cpp" />
   </ItemGroup>
   <PropertyGroup>

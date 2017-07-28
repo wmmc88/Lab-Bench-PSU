@@ -1,6 +1,7 @@
 //Main File for PSU Monitoring Project
 //Written by Melvin Wang
 
+#include "Switch.h"
 #include "Constants.h"
 #include "Ammeter.h"
 #include "Data.h"
