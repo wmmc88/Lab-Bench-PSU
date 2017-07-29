@@ -16,10 +16,10 @@ namespace multiplexer {
 
 	class Multiplexer {
 	public:
-		void init(int c, int s0, int s1, int s2, int s3);
-		int analogReadMux(MUXChannel muxChannel);
+		void init(byte comPin, byte signalPin0, byte signalPin1, byte signalPin2, byte signalPin3);
+		unsigned int analogReadMux(MUXChannel muxChannel);
 	private:
-		int m_comPin = -1, m_signalPin0 = -1, m_signalPin1 = -1, m_signalPin2 = -1, m_signalPin3 = -1;
+		byte m_comPin = -1, m_signalPin0 = -1, m_signalPin1 = -1, m_signalPin2 = -1, m_signalPin3 = -1;
 	};
 
 	extern Multiplexer multiplexer;

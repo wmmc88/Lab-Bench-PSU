@@ -14,17 +14,16 @@ namespace sensorReadings {
 
 	class Voltmeter {
 	public:
-		void init(double r1, double r2, double internalAREF);
-		void init(double r1, double r2, double internalAREF, bool refVoltage);
-		double getVoltage(int analogReading);
+		void init(unsigned long r1, unsigned long r2, bool refVoltage = false);
+		unsigned int getVoltage(unsigned int analogReading);
 	private:
-		double m_r1 = -1.1, m_r2 = -1.1, m_internalAREF = 1.1, m_average = 0.0;
-		int m_normalizedReadings[constants::numberReadings], m_index = 0;
+		unsigned long m_r1 = 0, m_r2 = 0;
+		unsigned int m_index = 0, m_readings[constants::numberReadings];
+		unsigned long m_sumReadings = 0;
 		bool m_refVoltage = false;
-
 	};
 
-	double readVcc(double internalReference);
+	extern unsigned int readVcc();
 }
 #endif
 

@@ -12,8 +12,8 @@ namespace intSwitch {
 
 	class Switch {
 	public:
-		void init(int intPin, int switchPin);
-		void changeState(int state);
+		void init(byte intPin, byte switchPin);
+		void changeState(byte state);
 		int m_intPin = -1;
 	private:
 		int m_switchPin = -1;

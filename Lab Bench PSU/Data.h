@@ -9,6 +9,7 @@
 #include "WProgram.h"
 #endif
 
+#include "Constants.h"
 #include "Multiplexer.h"
 #include "Voltmeter.h"
 #include "Ammeter.h"
@@ -23,12 +24,14 @@ namespace sensorReadings {
 	Channel operator++(Channel &c, int);
 
 	typedef struct Data {
-		double voltage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
-		double amperage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
-		double temperataure;
+		unsigned int voltage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
+		unsigned int amperage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
+		unsigned int temperataure;
 	}Data;
 
 	void updateData(Data& d);
+
+	unsigned int readVcc();
 }
 #endif
 

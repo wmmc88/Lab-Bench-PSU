@@ -6,7 +6,7 @@
 #include "Switch.h"
 
 namespace intSwitch {
-	void Switch::init(int intPin, int switchPin) {
+	void Switch::init(byte intPin, byte switchPin) {
 		m_intPin = intPin;
 		m_switchPin = switchPin;
 		pinMode(m_intPin, INPUT_PULLUP);
@@ -14,7 +14,7 @@ namespace intSwitch {
 		attachInterrupt(digitalPinToInterrupt(m_intPin), pwrButtonISR, CHANGE);
 	}
 
-	void Switch::changeState(int state) {
+	void Switch::changeState(byte state) {
 		digitalWrite(m_switchPin, state);
 	}
 

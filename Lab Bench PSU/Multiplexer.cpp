@@ -17,7 +17,7 @@ namespace multiplexer {
 		return rVal;
 	}
 
-	void Multiplexer::init(int comPin, int signalPin0, int signalPin1, int signalPin2, int signalPin3) {
+	void Multiplexer::init(byte comPin, byte signalPin0, byte signalPin1, byte signalPin2, byte signalPin3) {
 		m_comPin = comPin;
 		m_signalPin0 = signalPin0;
 		m_signalPin1 = signalPin1;
@@ -35,8 +35,8 @@ namespace multiplexer {
 		digitalWrite(m_signalPin3, LOW);
 	}
 
-	int Multiplexer::analogReadMux(MUXChannel muxChannel) {
-		int data = -1;
+	unsigned int Multiplexer::analogReadMux(MUXChannel muxChannel) {
+		unsigned int data = 0;
 		switch (muxChannel) {
 		case MUXChannel::C0:
 			data = analogRead(m_comPin);
