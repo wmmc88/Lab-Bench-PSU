@@ -18,7 +18,7 @@ namespace sensorReadings {
 		}
 	}
 
-	unsigned int Voltmeter::getVoltage(unsigned int analogReading) { // Add half-step (m_vRef/1024/2) for average resultant value b/c Arduino rounds down
+	unsigned int Voltmeter::getVoltage(unsigned long analogReading) { // Add half-step (m_vRef/1024/2) for average resultant value b/c Arduino rounds down
 		m_sumReadings -= m_readings[m_index];
 		if (m_refVoltage == true) {//refV assumed to be same as Vcc
 			if (m_r2 == 0) {

@@ -23,6 +23,4 @@ C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Lab\ Bench\
  C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Multiplexer.h \
  C:\Users\melvi\AppData\Local\Temp\VMBuilds\Lab\ Bench\ PSU\uno\Debug\Voltmeter.h \
  C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\ebyfft1h.qcd\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h \
- C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\ebyfft1h.qcd\Micro\ Platforms\default\debuggers\VM_DBG/VM_Boards.h \
- C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\ebyfft1h.qcd\Micro\ Platforms\default\debuggers\VM_DBG/VM_mem_check.h \
- C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\ebyfft1h.qcd\Micro\ Platforms\default\debuggers\VM_DBG/VM_mem_check.h
+ C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\ebyfft1h.qcd\Micro\ Platforms\default\debuggers\VM_DBG/VM_Boards.h

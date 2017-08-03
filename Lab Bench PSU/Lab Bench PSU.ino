@@ -44,9 +44,18 @@ void setup()
 
 void loop()
 {
-	sensorReadings::updateData(data);
+	//sensorReadings::updateData(data);
 
-
-	//Serial.println(voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].getVoltage(analogRead(A0)));
+	for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
+		Serial.print(static_cast<int>(c));
+		Serial.print("\t");
+	}
+	Serial.println("");
+	for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
+		Serial.print(sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].getVoltage(sensorReadings::mux.analogReadMux(c)));
+		Serial.print("\t");
+	}
+	Serial.println("");
+	Serial.println("");
 }
 

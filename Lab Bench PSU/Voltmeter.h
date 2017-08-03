@@ -15,7 +15,7 @@ namespace sensorReadings {
 	class Voltmeter {
 	public:
 		void init(unsigned long r1, unsigned long r2, bool refVoltage = false);
-		unsigned int getVoltage(unsigned int analogReading);
+		unsigned int getVoltage(unsigned long analogReading);
 	private:
 		unsigned long m_r1 = 0, m_r2 = 0;
 		unsigned int m_index = 0, m_readings[constants::numberReadings];
