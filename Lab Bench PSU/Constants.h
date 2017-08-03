@@ -14,11 +14,11 @@ namespace constants {
 #define ARDUINO_INTERNAL_1100MV_AREF (1092)  //internal reference measured externally with voltmeter in mV
 
 //MUX Pin Definitions
-#define MUX_COM_PIN (1)//A1
-#define MUX_SIGNAL_PIN_0 (16)//A2
+#define MUX_SIGNAL_PIN_0 (18)//A4
 #define MUX_SIGNAL_PIN_1 (17)//A3
-#define MUX_SIGNAL_PIN_2 (18)//A4
-#define MUX_SIGNAL_PIN_3 (19)//A5
+#define MUX_SIGNAL_PIN_2 (16)//A2
+#define MUX_SIGNAL_PIN_3 (15)//A1
+#define MUX_COM_PIN (0)//A0
 
 //Display Driver Pin Definitions
 /*Library only supports hardware SPI at this time
