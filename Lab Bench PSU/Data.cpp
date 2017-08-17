@@ -5,36 +5,78 @@
 #include "Data.h"
 
 namespace sensorReadings {
-	
+	//Enum Operators
 	Channel& operator++(Channel &c)
 	{
 		return c = static_cast<Channel>(static_cast<int>(c) + 1);
 	}
-
 	Channel operator++(Channel &c, int)
 	{
 		Channel rVal = c;
 		++c;
 		return rVal;
 	}
-
+	//Data & Data Collection Related Structures 
+	Data data;
 	multiplexer::Multiplexer mux;
 	Voltmeter voltmeters[static_cast<int>(sensorReadings::Channel::NUMBER_OF_CHANNELS)];///array of voltmeters
+	Thermostat thermostat;
 
 	void updateData(Data& d) {
+
+		d.temperataure = thermostat.getTemperature(analogRead(TEMP_SENSOR_PIN));
+
+
 		for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
 			if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
 				d.voltage[static_cast<int>(c)] = sensorReadings::voltmeters[static_cast<int>(c)].getVoltage(sensorReadings::mux.analogReadMux(static_cast<multiplexer::MUXChannel>(c)));
 			}
 		}
 
-	/*	for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
+		/*	for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
+				if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
+					d.amperage[static_cast<int>(c)] = sensorReadings::ammeters[static_cast<int>(c)].getAmperage(mux.analogReadMux(static_cast<multiplexer::MUXChannel>(c)));
+				}
+			}*/
+	}
+
+	void printData(Data& d) {
+		Serial.println("");
+
+		d.temperataure;//temp  FanDutyCycle	fan1rpm		fan2rpm		fan3rpm		
+
+
+		Serial.println("Voltages:");
+		for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
 			if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
-				d.amperage[static_cast<int>(c)] = ammeters[static_cast<int>(c)].getAmperage(mux.analogReadMux(static_cast<multiplexer::MUXChannel>(c)));
+				Serial.print(static_cast<int>(c));
+				Serial.print("\t");
 			}
-		}*/
-/*
-		d.temperataure = getTemperature();*/
+		}
+		Serial.println("");
+		for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
+			if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
+				Serial.print(d.voltage[static_cast<int>(c)]);
+				Serial.print("\t");
+			}
+		}
+		Serial.println("\n");
+
+		Serial.println("Amperages:");
+		for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
+			if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
+				Serial.print(static_cast<int>(c));
+				Serial.print("\t");
+			}
+		}
+		Serial.println("");
+		for (sensorReadings::Channel c = sensorReadings::Channel::FIRST_CHANNEL; c <= sensorReadings::Channel::LAST_CHANNEL; c++) {
+			if (c <= static_cast<sensorReadings::Channel>(multiplexer::MUXChannel::LAST_MUXCHANNEL)) {
+				Serial.print(d.amperage[static_cast<int>(c)]);
+				Serial.print("\t"); 
+			}
+		}
+		Serial.println("\n");
 	}
 
 

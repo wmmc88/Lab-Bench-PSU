@@ -18,12 +18,14 @@ namespace fanControl {
 		void init(byte sensorPin, byte pwmPin = 0);
 		unsigned int getSpeed();
 		void setDutyCycle(byte dutyCycle);
+		byte getDutyCycle();
 	private:
 		static FanController *_instances[3];
 		byte m_sensorPin;
 		byte m_sensorInterruptPin;
 		byte m_pwmPin;
 		byte m_instance;
+		byte m_dutyCycle;
 		volatile unsigned int m_halfRevs;
 		unsigned long m_lastMillis = -1;
 		void m_trigger();

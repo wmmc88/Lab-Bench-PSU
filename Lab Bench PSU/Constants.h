@@ -13,6 +13,9 @@ namespace constants {
 //Arduino Specific Constants
 #define ARDUINO_INTERNAL_1100MV_AREF (1092)  //internal reference measured externally with voltmeter in mV
 
+//Thermostat Constants
+#define TEMP_SENSOR_PIN 5 //A5
+
 //MUX Pin Definitions
 #define MUX_SIGNAL_PIN_0 (18)//A4
 #define MUX_SIGNAL_PIN_1 (17)//A3
@@ -29,6 +32,7 @@ Connect MOSI to UNO Digital #11 (Hardware SPI MOSI) */
 #define RA8875_RESET (7)
 #define RA8875_WAIT (4)
 #define RA8875_INT (2)
+
 
 //Voltmeter Constants (Resistance in Miliohms)
 #define P3V_R1 (0)
@@ -49,7 +53,6 @@ Connect MOSI to UNO Digital #11 (Hardware SPI MOSI) */
 #define USBSB_R2 (100300UL)
 
 const byte numberReadings = 30;
-
 }
 
 

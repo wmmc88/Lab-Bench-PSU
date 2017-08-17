@@ -39,7 +39,12 @@ namespace fanControl {
 	}
 
 	void FanController::setDutyCycle(byte dutyCycle) {
-		analogWrite(m_pwmPin, 2.55 * dutyCycle);
+		m_dutyCycle = dutyCycle;
+		analogWrite(m_pwmPin, 2.55 * m_dutyCycle);
+	}
+
+	byte FanController::getDutyCycle() {
+		return m_dutyCycle;
 	}
 
 	void FanController::m_attachInterrupt()

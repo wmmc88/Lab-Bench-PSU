@@ -1,6 +1,8 @@
 //Main File for PSU Monitoring Project
 //Written by Melvin Wang
 
+#include "Thermostat.h"
+#include "Thermostat.h"
 #include <PinChangeInterruptSettings.h>
 #include <PinChangeInterruptPins.h>
 #include <PinChangeInterruptBoards.h>
@@ -17,13 +19,11 @@
 //Debug (REMOVE /  implement check)
 const static bool debug = true;
 
-//Globals
-sensorReadings::Data data;
 
 void setup()
 {
 	if (debug == true) {
-		Serial.begin(56000);
+		Serial.begin(9600);
 	}
 
 	sensorReadings::mux.init(MUX_COM_PIN, MUX_SIGNAL_PIN_0, MUX_SIGNAL_PIN_1, MUX_SIGNAL_PIN_2, MUX_SIGNAL_PIN_3);
@@ -37,25 +37,30 @@ void setup()
 	sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::USB2X)].init(USB2X_R1, USB2X_R2);
 	sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::USBSB)].init(USBSB_R1,USBSB_R2);
 
+	sensorReadings::thermostat.init();
+
 	for (int i = 0; i < constants::numberReadings; i++ ) {
-		sensorReadings::updateData(data);
+		sensorReadings::updateData(sensorReadings::data);
 	}
 }
 
 void loop()
 {
-	//sensorReadings::updateData(data);
+	sensorReadings::updateData(sensorReadings::data);
+	if (debug) {
+		sensorReadings::printData(sensorReadings::data);
+	}
 
-	for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
-		Serial.print(static_cast<int>(c));
-		Serial.print("\t");
-	}
-	Serial.println("");
-	for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
-		Serial.print(sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].getVoltage(sensorReadings::mux.analogReadMux(c)));
-		Serial.print("\t");
-	}
-	Serial.println("");
-	Serial.println("");
+	//for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
+	//	Serial.print(static_cast<int>(c));
+	//	Serial.print("\t");
+	//}
+	//Serial.println("");
+	//for (multiplexer::MUXChannel c = multiplexer::MUXChannel::C15; c <= multiplexer::MUXChannel::C15; c++) {
+	//	Serial.print(sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].getVoltage(sensorReadings::mux.analogReadMux(c)));
+	//	Serial.print("\t");
+	//}
+	//Serial.println("");
+	//Serial.println("");
 }
 
