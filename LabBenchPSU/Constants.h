@@ -13,6 +13,7 @@ namespace constants {
 //Arduino Specific Constants
 #define ARDUINO_INTERNAL_1100MV_AREF (1092)  //internal reference measured externally with voltmeter in mV
 
+//Switch Pin Definition
 #define POWER_SWITCH_PIN (3)
 
 //Thermostat Pin Definition
