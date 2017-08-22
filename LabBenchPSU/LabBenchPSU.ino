@@ -21,9 +21,6 @@ void setup()
 	if (debug == true) {
 		Serial.begin(9600);
 	}
-
-	tempControl::fanControl.init();
-
 	sensorReadings::mux.init(MUX_COM_PIN, MUX_SIGNAL_PIN_0, MUX_SIGNAL_PIN_1, MUX_SIGNAL_PIN_2, MUX_SIGNAL_PIN_3);
 	
 	sensorReadings::voltmeters[static_cast<int>(sensorReadings::Channel::P3V)].init(P3V_R1, P3V_R2);
@@ -37,6 +34,8 @@ void setup()
 
 	sensorReadings::thermostat.init();
 
+	tempControl::fanControl.init();
+
 	for (int i = 0; i < constants::numberReadings; i++ ) {
 		sensorReadings::updateData(sensorReadings::data);
 	}
@@ -48,5 +47,6 @@ void loop()
 	if (debug) {
 		sensorReadings::printData(sensorReadings::data);
 	}
+	tempControl::fanControl.updateFanSpeed();
 }
 

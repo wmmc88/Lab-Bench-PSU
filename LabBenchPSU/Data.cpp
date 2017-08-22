@@ -21,11 +21,10 @@ namespace sensorReadings {
 	multiplexer::Multiplexer mux;
 	Voltmeter voltmeters[static_cast<int>(sensorReadings::Channel::NUMBER_OF_CHANNELS)];
 	Ammeter ammeters[static_cast<int>(sensorReadings::Channel::NUMBER_OF_CHANNELS)];
-	Thermostat thermostat;
 
 	void updateData(Data& d) {
 
-		d.temperataure = thermostat.getTemperature(analogRead(TEMP_SENSOR_PIN));
+		d.temperature = thermostat.getTemperature(analogRead(TEMP_SENSOR_PIN));
 		d.fanDutyCycle = tempControl::fanControl.m_fan0.getDutyCycle();
 		d.fanSpeed[0] = tempControl::fanControl.m_fan0.getSpeed();
 		d.fanSpeed[1] = tempControl::fanControl.m_fan1.getSpeed();
@@ -48,7 +47,7 @@ namespace sensorReadings {
 		Serial.println("");
 
 		Serial.print("Temperature: ");
-		Serial.print(d.temperataure / 10.0);
+		Serial.print(d.temperature / 10.0);
 		Serial.print('\xB0');
 		Serial.print("C");
 		Serial.print("\t");

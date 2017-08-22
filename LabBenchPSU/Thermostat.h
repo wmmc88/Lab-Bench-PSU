@@ -15,7 +15,7 @@ namespace sensorReadings {
 	{
 	public:
 		void init();
-		unsigned long getTemperature(unsigned long analogReading);
+		unsigned int getTemperature(unsigned long analogReading);
 
 	private:
 		unsigned long m_sumReadings = 0;
@@ -23,7 +23,7 @@ namespace sensorReadings {
 	};
 
 	extern unsigned int readVcc();
-
+	extern Thermostat thermostat;
 }
 #endif
 

@@ -11,7 +11,7 @@ namespace sensorReadings {
 	}
 
 	double Ammeter::getCurrent(int analogReading) {
-
+		return 0.0;
 	}
 }
 

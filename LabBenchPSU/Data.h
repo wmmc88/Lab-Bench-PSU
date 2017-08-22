@@ -23,7 +23,7 @@ namespace sensorReadings {
 	Channel operator++(Channel &c, int);
 
 	typedef struct Data {
-		unsigned int temperataure;
+		unsigned int temperature;
 		byte fanDutyCycle;
 		unsigned int fanSpeed[3];
 		unsigned int voltage[static_cast<int>(Channel::NUMBER_OF_CHANNELS)];
@@ -40,7 +40,6 @@ namespace sensorReadings {
 	extern multiplexer::Multiplexer mux;
 	extern Voltmeter voltmeters[];
 	extern Ammeter ammeters[];
-	extern Thermostat thermostat;
 }
 #endif
 
